@@ -33,6 +33,5 @@ contract Mapping {
     function getGender(string memory _name) public view returns(bool) {
         return gender[_name];
     }
-
-    
+   
 }
