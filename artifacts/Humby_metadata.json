@@ -60,6 +60,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getCarState",
 				"outputs": [
 					{
@@ -136,11 +149,11 @@
 	},
 	"sources": {
 		"Exam_20231228.sol": {
-			"keccak256": "0xa16e85b91f5c8fd1a17e6522ac7c54900dd2b7a27372c8fca0927df3d0d0b5db",
+			"keccak256": "0x96303154937b777d15cd50bcc4d4d16e002048d1412c4192be45f99f795a9236",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://bc59edf8d093e0592d5f1600325b7eeb8bc74dce3645ca4ad70f7b3838b641e7",
-				"dweb:/ipfs/QmSUT4HJd37T4jsDs452PcoPF2R8G32G9m4kZjHxeDB847"
+				"bzz-raw://e4a60fde038a4c31e21f4c04dadebb239d318c37944468d91803554915b8256b",
+				"dweb:/ipfs/QmQZYQrbtLfpvhtSdrkqFq8imAhb1FjcEmU2UNWu88ndYJ"
 			]
 		}
 	},

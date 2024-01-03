@@ -9,6 +9,7 @@ pragma solidity >=0.8.2 < 0.9.0;
 * 지불을 미리 하고 주유시 차감하는 기능
 */
 
+// contract Humby <-> GasStation (owner 2번 지갑) 
 contract Humby {
     // 자동차의 상태에는 정지, 운전중, 시동 끔, 연료없음 총 4가지 상태가 있습니다.
     // 정지는 속도가 0인 상태, 운전 중은 속도가 있는 상태이다. 
@@ -23,15 +24,17 @@ contract Humby {
 
     uint carVelocity;
     uint carFuel;
-    address payable owner;
-    address gasStation;
+    address payable owner;  // 받을 수 있는 주소
+    address payable gasStation;
+
 
     constructor() {
         carStatus = Status.TurnOff;
         carVelocity = 0;
         carFuel = 0;
         owner = payable(msg.sender);
-        gasStation = address(0xA5c398700a522D5e41EEDd924dc1CB489EfC096E);
+        gasStation = payable(address(0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2));
+        
     }
 
     function setVelocityforTest(uint _v) public {
@@ -96,6 +99,39 @@ contract Humby {
     }
 
     function RechargeGasCard() public {
-
+        gasStation.transfer(1 ether);
     }
+
+    function deposit() public payable {
+        
+    }
+
+    function getBalance() public view returns(uint) {
+        return owner.balance;
+    }
+}
+
+contract GasStation {
+    address payable owner;
+
+    constructor() {
+        // 2번 지갑 주소 address(0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2);
+        owner = payable(address(0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2));
+    }
+
+    function getOwner() public view returns(address) {
+        return owner;
+    }
+
+    function getBalance() public view returns(uint) {
+        return owner.balance;
+    }
+
+    function deposit() public payable {}
+
+    function withdraw_all() public {
+        owner.transfer(address(this).balance);
+    }
+
+    
 }
